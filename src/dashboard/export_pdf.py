@@ -10,7 +10,7 @@ from playwright.sync_api import sync_playwright
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-SITE_PATH = "report/site_v2/index.html"
+SITE_PATH = "report/site/index.html"
 PDF_PATH = "report/final/suncream_unmet_needs_report_v2.pdf"
 
 def generate_pdf():

@@ -1,7 +1,7 @@
 window.DASHBOARD_DATA = {
   "meta": {
     "title": "Suncream Unmet Needs Analysis",
-    "generated_at": "2025-12-25 23:57",
+    "generated_at": "2025-12-26 12:51",
     "caveat": "본 보고서는 LLM 기반으로 추출된 샘플링 데이터를 분석한 결과입니다."
   },
   "quality_gate": {
@@ -319,9 +319,9 @@ window.DASHBOARD_DATA = {
       }
     ],
     "text": {
-      "observation": "IRRITATION(자극), OILINESS(유분), PILLING(밀림)은 80개 이상의 제품에서 반복적으로 언급되며(Repeat Rate > 80%), 절대적인 불만 볼륨도 가장 큽니다.",
-      "interpretation": "특정 제품의 결함이 아니라, 선크림 카테고리가 가진 구조적인 난제(Trade-off)임을 시사합니다. 이를 해결하면 시장 파급력이 큽니다.",
-      "caveat": "Goods Count 20개 미만의 긴 꼬리(Long-tail) 속성은 산점도에서 제외하거나 별도 해석이 필요합니다."
+      "observation": "🔴 빨간색 점(Top 5)은 자극, 유분, 밀림, 속건조, 톤업 등 핵심 미충족 니즈를 나타내며, 🔵 파란색 점은 그 외 속성입니다.",
+      "interpretation": "<b>X축(반복성)</b>이 높을수록 특정 제품만의 문제가 아닌 '카테고리 공통의 난제'임을 의미합니다. <b>Y축(불만 규모)</b>이 높을수록 고객 이탈에 미치는 영향이 큽니다. 즉, 우측 상단(빨간색 영역)은 반드시 해결해야 할 시장의 기회입니다.",
+      "caveat": "원의 크기는 해당 속성이 언급된 제품의 수를 나타냅니다. 크기가 작고 좌측에 있는 속성은 틈새 시장(Niche) 니즈일 수 있습니다."
     }
   },
   "market_pain": {
