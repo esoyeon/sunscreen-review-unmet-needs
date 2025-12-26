@@ -1,0 +1,83 @@
+# 올리브영 선크림 리뷰 수집 설정
+# ================================
+
+# 카탈로그 수집 설정
+catalog:
+  base_url: "https://www.oliveyoung.co.kr/store/display/getMCategoryList.do"
+  disp_cat_no: "100000100110006"  # 선크림 카테고리
+  prd_sort: "03"  # 판매금액순
+  rows_per_page: 48
+
+# 리뷰 수집 설정
+reviews:
+  api_url: "https://m.oliveyoung.co.kr/review/api/v2/reviews"
+  top_n: 150  # 리뷰 수집 대상 제품 수 (list_rank 기준)
+  min_review_count: 10  # 리뷰 수가 이 미만인 제품은 후순위
+  
+  # 정렬별 수집 수량
+  sort_limits:
+    helpful: 30       # 도움순 (RECOMMENDED_DESC)
+    newest: 20        # 최신순 (DATETIME_DESC)
+    low_rating: 20    # 평점 낮은순 (RATING_ASC)
+    high_rating: 10   # 평점 높은순 (RATING_DESC)
+  
+  # API sortType 매핑
+  sort_types:
+    helpful: "RECOMMENDED_DESC"
+    newest: "DATETIME_DESC"
+    low_rating: "RATING_ASC"
+    high_rating: "RATING_DESC"
+    useful: "USEFUL_SCORE_DESC"
+  
+  page_size: 10  # API 페이지당 리뷰 수
+
+# 롱테일 랜덤 샘플링 (선택)
+longtail:
+  enabled: false
+  random_count: 30  # 추가 랜덤 수집 제품 수
+
+# 요청 제어
+request:
+  delay_min: 1.0   # 최소 딜레이 (초)
+  delay_max: 2.0   # 최대 딜레이 (초)
+  max_retries: 3   # 최대 재시도 횟수
+  timeout: 30      # 요청 타임아웃 (초)
+
+# HTTP 헤더
+headers:
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  accept: "application/json, text/html, */*"
+  accept_language: "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7"
+
+# 노이즈 태깅 규칙
+noise_tagging:
+  # is_trial 탐지 키워드
+  trial_keywords:
+    - "체험단"
+    - "증정"
+    - "제공받"
+    - "협찬"
+    - "이벤트"
+    - "무료"
+    - "선물"
+    - "샘플"
+  
+  # is_low_info 규칙
+  low_info:
+    min_length: 15  # 최소 글자 수
+    # 배송/포장 위주 패턴
+    delivery_keywords:
+      - "배송"
+      - "포장"
+      - "사은품"
+      - "빠름"
+      - "빨라"
+      - "도착"
+      - "친절"
+
+# 출력 경로
+output:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  log_dir: "logs"
+  report_dir: "report"

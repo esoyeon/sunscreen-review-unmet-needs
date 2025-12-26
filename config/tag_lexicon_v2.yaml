@@ -1,0 +1,113 @@
+# Step 3-1 v2: Tag Lexicon
+# 속성/맥락/피부 태그 사전 (2-level 계층화)
+# =============================================
+
+# 속성 태그 (Attributes)
+attributes:
+  FINISH:
+    WHITECAST: "백탁|허옇|하얘지|하얗게|얼굴이\\s?떠|동동|희끗|하얘져|하얗게\\s?뜨"
+    TONEUP: "톤업|밝아보|환해|톤\\s?보정|자연\\s?톤업|핑크\\s?톤업|화사해|환하게"
+    OILINESS: "유분|기름|번들|번들거|개기름|번들대|기름기|유분감"
+    STICKINESS: "끈적|찐득|찝찝|달라붙|끈적임|끈적끈적"
+    TEXTURE_HEAVY: "무겁|답답|두껍|코팅|막\\s?바른|텁텁"
+    TEXTURE_LIGHT: "가볍|산뜻|라이트|산뜻함|가벼워|산뜻하게"
+  
+  COMPATIBILITY:
+    PILLING: "밀림|필링|때처럼|뭉침|가루\\s?끼|보풀|떡짐|밀려|지우개\\s?가루"
+    ABSORPTION: "흡수|스며|겉돌|겉\\s?도는|흡수력|흡수가"
+  
+  SENSATION:
+    EYE_STING: "눈\\s?시림|눈\\s?따가|눈물|시려|눈이\\s?아프|눈시림|눈따가움"
+    IRRITATION: "자극|따갑|가렵|가려움|화끈|붉어|알러지|뒤집|트러블|뾰루지"
+    SCENT: "향|냄새|향료|무향|향이\\s?강|향이\\s?좋"
+  
+  HYDRATION:
+    DRYNESS: "건조|땅김|당김|푸석|건조해|건조함"
+    MOISTURE: "보습|촉촉|수분|촉촉함|촉촉해|보습력"
+    FLAKING: "들뜸|각질|하얗게\\s?일어|부각|들떠"
+  
+  DURABILITY:
+    WATERPROOF: "워터\\s?프루프|방수|물에|땀에|번져|흘러|땀에도|물놀이"
+    LONGEVITY: "지속|지속력|유지|오래가|무너짐|흐트러|지속성"
+  
+  RESIDUE:
+    WHITE_RESIDUE: "잔여감|가루\\s?남|하얀\\s?가루|때낌|잔여물"
+  
+  TRANSFER:
+    STAINING: "옷에\\s?묻|마스크에\\s?묻|이염|묻어나|옷묻음|마스크\\s?묻"
+
+# 맥락 태그 (Contexts)
+contexts:
+  MAKEUP:
+    BEFORE_MAKEUP: "화장|메이크업|파운데|쿠션|베이스|프라이머|BB|CC크림"
+    NO_MAKEUP: "쌩얼|노\\s?메이크업|선크림만|선크림\\s?단독"
+    MAKEUP_PILLING: "화장\\s?뜸|화장\\s?밀림|베이스\\s?밀림|쿠션\\s?밀림|화장이\\s?밀려"
+  
+  ENV:
+    SUMMER: "여름|장마|습|땀|더운|한여름|무더위"
+    WINTER: "겨울|건조한|추운|한겨울"
+    MASK: "마스크"
+  
+  USE:
+    REAPPLY: "덧바|재도포|수시로|여러\\s?번|다시\\s?바"
+    FULL_AMOUNT: "정량|듬뿍|많이\\s?바르|두\\s?번|레이어링|두껍게"
+    LAYERING: "레이어|겹쳐|다른\\s?제품이랑|스킨케어\\s?후|로션\\s?위에"
+  
+  ACTIVITY:
+    OUTDOOR: "야외|등산|캠핑|바닷가|여행|골프|나들이|외출"
+    SPORTS: "운동|러닝|조깅|헬스|땀\\s?많이|운동할\\s?때"
+
+# 피부 태그 (Skins)
+skins:
+  TYPE:
+    OILY: "지성|피지|지복합|지성\\s?피부"
+    DRY: "건성|건조\\s?피부|건성\\s?타입"
+    COMBINATION: "복합|복합\\s?피부|복합성"
+    SENSITIVE: "민감|예민|민감\\s?피부|민감성"
+    ATOPIC: "아토피"
+  
+  CONCERN:
+    ACNE: "여드름|트러블\\s?피부|뾰루지|좁쌀|트러블\\s?성"
+    REDNESS: "홍조|붉은\\s?기|붉은\\s?피부"
+    DEHYDRATED_OILY: "속\\s?건조|겉은\\s?지성|수분\\s?부족|수부지"
+    PORES: "모공|모공\\s?피부"
+    BLACKHEAD: "블랙헤드|화이트헤드|피지\\s?관리"
+
+# 조건부 마커 (Conditional Markers)
+conditional_markers:
+  CONTRAST: "근데|하지만|다만|그런데|그래도|대신|그렇지만"
+  CONDITION: "때는|때만|할\\s?때|하면|안\\s?하면|바르면|바를\\s?때|경우에"
+  SEASONAL: "여름엔|겨울엔|봄엔|가을엔|여름에는|겨울에는"
+  DEPENDS: "사람마다|케바케|개인차|피부마다"
+  LIMIT: "아쉽|아쉬운|단점|불편|그게\\s?문제|다른\\s?건\\s?좋은데|한가지\\s?아쉬운"
+
+# 부정어 패턴 (Negations)
+negations:
+  - "없(어|음|고|는|다)"
+  - "안\\s"
+  - "않"
+  - "못\\s"
+  - "전혀"
+  - "노\\s?백탁"
+  - "백탁\\s?없"
+  - "안\\s?나"
+  - "안\\s?생기"
+  - "없었"
+  - "없이"
+
+# 메타 설정
+meta:
+  negation_window_chars: 12
+  negation_window_tokens: 3
+  negation_target_tags:
+    - WHITECAST
+    - OILINESS
+    - STICKINESS
+    - EYE_STING
+    - IRRITATION
+    - PILLING
+  priority_primary_sort:
+    - low_rating
+    - newest
+    - helpful
+    - high_rating

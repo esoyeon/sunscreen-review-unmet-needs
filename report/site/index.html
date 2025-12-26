@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suncream Unmet Needs Report V2</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- Local ECharts (Fallback to CDN if local fails - handled via JS check or just assume local as per plan) -->
+    <script src="assets/echarts.min.js"></script>
+    <script src="data/dashboard_data.js"></script>
+    <script src="assets/app.js" defer></script>
+</head>
+
+<body>
+    <div class="report-container">
+        <!-- 0. Hero / Executive Summary -->
+        <header id="hero-section">
+            <div class="report-meta">
+                <span class="company-logo">DEEPMIND ANALYSIS</span>
+                <span class="report-date" id="report-date">2024.01.01</span>
+            </div>
+            <h1>Suncream Unmet Needs Analysis</h1>
+            <p class="subtitle">소비자 리뷰 기반의 미충족 니즈(Unmet Needs) 발굴 및 신상품 기획 제언</p>
+
+            <!-- Quality Gate Cards -->
+            <div id="quality-gate-cards" class="card-grid-6">
+                <!-- JS Injected -->
+            </div>
+
+            <!-- Top 5 Executives -->
+            <div class="exec-summary-box">
+                <h2>👑 Executive Summary: 핵심 패턴 Top 5</h2>
+                <div id="top5-cards" class="card-grid-5-distinct">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 1. Trust & Signal -->
+            <section id="trust-signal" class="page-break-after">
+                <div class="section-header">
+                    <h2>1. 분석 신뢰도 검증 (Trust & Signal)</h2>
+                    <p class="section-desc">LLM 분석 결과의 신뢰도 검증: 리뷰 별점(Bucket)과 감정(Met/Unmet)의 상관관계</p>
+                </div>
+                <div class="chart-wrapper">
+                    <div id="chart-polarity" class="echart-container"></div>
+                </div>
+                <div class="insight-box" id="text-polarity">
+                    <!-- JS Injected -->
+                </div>
+            </section>
+
+            <!-- 2. Opportunity Map -->
+            <section id="opportunity-map">
+                <div class="section-header">
+                    <h2>2. 반복×규모 패턴 지도 (Opportunity Map)</h2>
+                    <p class="section-desc">시장 기회 탐색: 문제의 반복성(Repeatability)과 규모(Volume) 매트릭스</p>
+                </div>
+                <div class="chart-wrapper">
+                    <div id="chart-opportunity" class="echart-container-lg"></div>
+                </div>
+                <div class="insight-box" id="text-opportunity"></div>
+            </section>
+
+            <!-- 3. Market Pain -->
+            <section id="market-pain" class="page-break-after">
+                <div class="section-header">
+                    <h2>3. 시장의 실패 요인 (Market Pain)</h2>
+                    <p class="section-desc">명확한 실패 요인: 저평가 리뷰에서 압도적으로 나타나는 불만</p>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-col-60">
+                        <div id="chart-pain" class="echart-container"></div>
+                    </div>
+                    <div class="flex-col-40">
+                        <div class="table-wrapper">
+                            <table id="table-pain" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>Unmet</th>
+                                        <th>n</th>
+                                        <th>Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-box" id="text-pain"></div>
+            </section>
+
+            <!-- 4. Golden Nugget -->
+            <section id="golden-nugget">
+                <div class="section-header">
+                    <h2>4. 기회 요인 (Golden Nugget)</h2>
+                    <p class="section-desc">조건부 만족: 고평가 리뷰 속에 숨겨진 '아쉬운 한 끝' (개선 시 충성도↑)</p>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-col-60">
+                        <div id="chart-golden" class="echart-container"></div>
+                    </div>
+                    <div class="flex-col-40">
+                        <div class="table-wrapper">
+                            <table id="table-golden" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Aspect</th>
+                                        <th>Unmet+Mix</th>
+                                        <th>Met</th>
+                                        <th>n</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight-box" id="text-golden"></div>
+            </section>
+
+            <!-- 5. Context Analysis -->
+            <section id="context-analysis" class="page-break-after">
+                <div class="section-header">
+                    <h2>5. 상황별 니즈 (Context Analysis)</h2>
+                    <p class="section-desc">상황별 미충족 니즈: 언제, 어떤 상황에서 문제가 발생하는가</p>
+                </div>
+                <!-- Controls (Hidden on Print) -->
+                <div class="controls no-print">
+                    <span class="control-label">Min N:</span>
+                    <input type="number" id="ctx-min-n" value="20" onchange="renderContextChart()">
+                </div>
+                <div class="chart-wrapper">
+                    <div id="chart-context" class="echart-container-lg"></div>
+                </div>
+                <div class="insight-box" id="text-context"></div>
+            </section>
+
+            <!-- 6. Seasonality -->
+            <section id="seasonality">
+                <div class="section-header">
+                    <h2>6. 계절성 분석 (Seasonality)</h2>
+                    <p class="section-desc">계절별 니즈 변화: 여름 vs 겨울 주요 불만 차이</p>
+                </div>
+                <div class="chart-wrapper">
+                    <div id="chart-season" class="echart-container"></div>
+                </div>
+                <div class="insight-box" id="text-season"></div>
+            </section>
+
+            <!-- 7. Action Plan -->
+            <section id="action-plan" class="page-break-after">
+                <div class="section-header">
+                    <h2>7. 실행 계획 (Action Plan)</h2>
+                    <p class="section-desc">실행 전략: 우선순위(ICE) 및 제품 개발 스펙(Spec Matrix)</p>
+                </div>
+
+                <h3>7.1 Priority (ICE Score)</h3>
+                <div class="table-wrapper">
+                    <table id="table-ice" class="data-table full-width">
+                        <thead>
+                            <tr>
+                                <th>Needs</th>
+                                <th>Name</th>
+                                <th>Impact</th>
+                                <th>Confidence</th>
+                                <th>Ease</th>
+                                <th>Score</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <h3>7.2 Product Spec Matrix</h3>
+                <div class="table-wrapper">
+                    <table id="table-spec" class="data-table full-width">
+                        <thead>
+                            <tr>
+                                <th>Requirement</th>
+                                <th>Aspect</th>
+                                <th>Context</th>
+                                <th>KPI</th>
+                                <th>Test Method</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="insight-box" id="text-action"></div>
+            </section>
+
+            <!-- 8. Evidence Drilldown -->
+            <section id="evidence">
+                <div class="section-header">
+                    <h2>8. 고객의 소리 (Voice of Customer)</h2>
+                    <p class="section-desc">고객의 소리(Voice of Customer): 정량적 분석을 뒷받침하는 실제 리뷰</p>
+                </div>
+                <div class="controls no-print">
+                    <select id="evidence-filter" onchange="filterEvidence()">
+                        <option value="ALL">All Aspects</option>
+                    </select>
+                </div>
+                <div id="evidence-container" class="evidence-grid">
+                    <!-- JS Injected -->
+                </div>
+                <div class="insight-box" id="text-evidence"></div>
+            </section>
+
+            <!-- 9. Glossary -->
+            <section id="glossary" class="page-break-after">
+                <div class="section-header">
+                    <h2>부록: 분석 용어 정의 (Glossary)</h2>
+                    <p class="section-desc">LLM 추출 속성(Aspect)에 대한 상세 정의 및 예시 표현</p>
+                </div>
+                <div id="glossary-grid" class="glossary-grid">
+                    <!-- JS Injected -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Generated by Deepmind Advanced Agentic Coding Environment</p>
+            <p class="copyright">Note: This report is generated automatically based on LLM analysis.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
