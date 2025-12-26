@@ -78,7 +78,7 @@ graph LR
 
 ---
 
-## � 3. 프로젝트 구조 (Refactoring)
+## 📂 3. 프로젝트 구조 (Refactoring)
 
 ```
 sunblock-review-analysis/
