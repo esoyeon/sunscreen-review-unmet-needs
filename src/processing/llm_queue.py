@@ -4,7 +4,7 @@ Step 3-2: LLM Queue 생성 스크립트
 고가치 리뷰를 버킷별로 분류하여 LLM 추출용 Queue 생성.
 
 Usage:
-    python -m src.step3_2_make_llm_queue \
+    python -m src.processing.llm_queue \
         --input data/processed/reviews_step3_tagged.parquet \
         --out data/llm/llm_queue.parquet \
         --report report/step3_2_llm_queue.md

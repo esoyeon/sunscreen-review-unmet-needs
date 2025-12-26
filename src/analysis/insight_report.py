@@ -2,7 +2,7 @@
 Step 4-1: Insight Report - 미충족 니즈 분석 결과 검증 및 해석
 
 Usage:
-    python -m src.step4_1_insight_report \
+    python -m src.analysis.insight_report \
         --analysis_dir data/analysis \
         --out report/step4_1_insight_review.md \
         --min_n_items 30 \

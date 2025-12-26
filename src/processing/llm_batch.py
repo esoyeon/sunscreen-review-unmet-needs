@@ -4,7 +4,7 @@ Step 3-3: Gemini Extraction 전체 처리 (배치 버전)
 전체 LLM Queue(4,052건)를 배치 처리로 추출.
 
 Usage:
-    python -m src.step3_3_full_batch \
+    python -m src.processing.llm_batch \
         --input data/llm/llm_queue.parquet \
         --out data/llm/extractions_full.parquet \
         --out_norm data/llm/extractions_full_normalized.parquet \

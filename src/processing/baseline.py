@@ -5,7 +5,7 @@ Step 3-0: Baseline 전처리 스크립트
 원문(review_text)은 절대 수정하지 않고, 분석용 파생 컬럼만 추가합니다.
 
 Usage:
-    python -m src.step3_0_baseline --input data/processed/reviews.parquet --out data/processed/reviews_step3_base.parquet
+    python -m src.processing.baseline --input data/processed/reviews.parquet --out data/processed/reviews_step3_base.parquet
 """
 
 import argparse

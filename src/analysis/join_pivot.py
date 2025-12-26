@@ -4,7 +4,7 @@ Step 4-0: Join & Pivot - LLM Aspect/Polarity × Rule Context
 LLM 추출 결과와 Rule 기반 태깅을 조인하여 미충족 니즈 분석 테이블 생성.
 
 Usage:
-    python -m src.step4_0_join_pivot \
+    python -m src.analysis.join_pivot \
         --norm data/llm/extractions_full_normalized.parquet \
         --tagged data/processed/reviews_step3_tagged.parquet \
         --out_dir data/analysis \

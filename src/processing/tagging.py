@@ -5,7 +5,7 @@ Attribute/Context/Skin 태깅, Conditional 탐지, Negation handling, Golden Nug
 원문 보존, 태그와 플래그로만 통제.
 
 Usage:
-    python -m src.step3_1_tagging \
+    python -m src.processing.tagging \
         --input data/processed/reviews_step3_dedup.parquet \
         --out data/processed/reviews_step3_tagged.parquet \
         --lexicon config/tag_lexicon_v2.yaml

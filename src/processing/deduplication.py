@@ -5,7 +5,7 @@ Step 3-0.5: Review Deduplication 스크립트
 원문 보존, 메타데이터는 merge 규칙에 따라 통합.
 
 Usage:
-    python -m src.step3_0_5_dedup \
+    python -m src.processing.deduplication \
         --input data/processed/reviews_step3_base.parquet \
         --out data/processed/reviews_step3_dedup.parquet
 """
