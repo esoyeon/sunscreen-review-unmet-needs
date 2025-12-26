@@ -145,8 +145,12 @@ python -m src.processing.tagging
 python -m src.processing.llm_queue
 ```
 
-### 4. 데이터 분석 (Analysis)
-처리된 데이터를 바탕으로 통계 및 인사이트를 도출합니다.
+### 4. 탐색적 데이터 분석 (EDA) & 고급 분석 (Analysis)
+데이터의 기초 통계 확인 및 다각도 분석을 수행합니다.
+
+**탐색적 데이터 분석 (EDA)**
+`notebooks/eda_exploration.ipynb` 노트북을 통해 데이터를 직접 탐색해볼 수 있습니다.
+- **주요 내용**: Bucket/Context/Season/Aspect 별 Unmet Rate 시각화 및 샘플 리뷰 확인
 
 **Step 4-0: Join & Pivot 테이블 생성**
 ```bash
